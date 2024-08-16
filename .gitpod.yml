@@ -1,0 +1,10 @@
+image: gitpod/workspace-full-vnc
+
+tasks:
+  - init: |
+      sudo apt-get update
+      sudo apt-get install -y mysql-server
+      ./mvnw clean install
+  - command: |
+      sudo service mysql start
+      ./mvnw spring-boot:run
