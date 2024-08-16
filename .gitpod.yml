@@ -1,10 +1,13 @@
-image: gitpod/workspace-full-vnc
+image: gitpod/workspace-java-17
 
 tasks:
-  - init: |
-      sudo apt-get update
-      sudo apt-get install -y mysql-server
-      ./mvnw clean install
-  - command: |
-      sudo service mysql start
-      ./mvnw spring-boot:run
+  - init: "docker-compose up -d"
+
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack
+    - humao.rest-cliente
+    - vscjava.vscode-glade
+ports:
+  - port: 8080
+    visibility: public
